@@ -1,4 +1,4 @@
-## Workflow to predict taxonomy from uncorrected long reads using krocus.
+## Workflow to predict taxonomy from uncorrected long reads using kraken.
 ### Usage
 
 ```
