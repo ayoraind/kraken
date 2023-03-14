@@ -2,7 +2,7 @@ process KRAKEN {
     publishDir "${params.output_dir}", mode:'copy'
     tag "speciation of ${meta}"
 
-    conda "../kraken_env.yml"
+    conda "/MIGE/01_DATA/07_TOOLS_AND_SOFTWARE/nextflow_pipelines/kraken/kraken_env.yml"
 
     input:
     tuple val(meta), path(reads)
@@ -84,11 +84,9 @@ process COMBINE_KRAKEN_REPORT_FROM_TAXA {
     if [[ \$index -eq 0 ]]; then
       echo "samplename\t\$(head -1 \${KRAKEN_TAXON_REPORT_FILE})" >> combined_kraken_report_${taxon}_${date}.txt
     fi
-    #echo "\${sample_id}\t\$(awk 'FNR>=2 {print}' \${KRAKEN_TAXON_REPORT_FILE})" >> combined_kraken_report_${taxon}_${date}.txt
-    #awk '{print \${sample_id}, \$0' \${KRAKEN_TAXON_REPORT_FILE} >> combined_kraken_report_${taxon}_${date}.txt
+    
     awk -F '\\t' 'FNR>=2 { print FILENAME, \$0 }' \${KRAKEN_TAXON_REPORT_FILE} |  sed 's/\\.${taxon}\\.kraken\\.txt//g' >> combined_kraken_report_${taxon}_${date}.txt
     done
-
 
     """
 }
