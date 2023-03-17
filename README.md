@@ -13,7 +13,7 @@
          --sequencing_date              Sequencing Date (for TAPIR, must start with G e.g., "G230223")
 
         Optional arguments:
-         --taxon                        taxonomic rank symbol (e.g., "S", "G", "F", "O", "C", "P", "K", "D", Default: "S")
+         --taxon                        value must be one of: "S", "G", "F", "O", "C", "P", "K", "D", (Default: "S")
          --help                         This usage statement.
          --version                      Version statement
 
