@@ -33,7 +33,7 @@ def check_params(Map params) {
     final_params.taxon = check_mandatory_parameter(params, 'taxon') - ~/\/$/
         
     // check taxon is valid
-    final_params.taxon = check_parameter_value('taxon', final_params.taxon, ['S', 'G', 'F', 'O', 'C', 'P', 'K', 'D'])
+    final_params.taxon = check_parameter_value('taxon', final_params.taxon, ['S', 'G', 'F', 'O', 'C', 'P', 'K', 'D', 'U'])
     
     return final_params
 }
