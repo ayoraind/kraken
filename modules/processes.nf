@@ -2,8 +2,6 @@ process KRAKEN {
     publishDir "${params.output_dir}", mode:'copy'
     tag "speciation of ${meta}"
 
-    conda "/MIGE/01_DATA/07_TOOLS_AND_SOFTWARE/nextflow_pipelines/kraken/kraken_env.yml"
-
     input:
     tuple val(meta), path(reads)
     val database
