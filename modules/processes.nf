@@ -83,7 +83,9 @@ process COMBINE_KRAKEN_REPORT_FROM_TAXA {
       echo "samplename\t\$(head -1 \${KRAKEN_TAXON_REPORT_FILE})" >> combined_kraken_report_${taxon}_${date}.txt
     fi
     
-    awk -F '\\t' 'FNR>=2 { print FILENAME, \$0 }' \${KRAKEN_TAXON_REPORT_FILE} |  sed 's/\\.${taxon}\\.kraken\\.txt//g' >> combined_kraken_report_${taxon}_${date}.txt
+    # awk -F '\\t' 'FNR>=2 { print FILENAME, \$0 }' \${KRAKEN_TAXON_REPORT_FILE} |  sed 's/\\.${taxon}\\.kraken\\.txt//g' >> combined_kraken_report_${taxon}_${date}.txt
+    
+    awk -v OFS='\\t' 'FNR>=2 { print FILENAME, \$0 }' \${KRAKEN_TAXON_REPORT_FILE} |  sed 's/\\.${taxon}\\.kraken\\.txt//g' >> combined_kraken_report_${taxon}_${date}.txt
     done
 
     """
